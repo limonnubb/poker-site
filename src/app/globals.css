@@ -14,97 +14,127 @@ body {
   min-height: 100vh;
 }
 
-@layer components {
-  .card {
-    @apply w-16 h-24 rounded-lg border-2 flex items-center justify-center text-2xl font-bold select-none;
-    background: linear-gradient(145deg, #1f2937 0%, #111827 100%);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  }
-
-  .card.red {
-    @apply text-card-red;
-  }
-
-  .card.black {
-    @apply text-gray-200;
-  }
-
-  .btn-action {
-    @apply px-6 py-3 rounded-xl font-semibold text-sm uppercase tracking-wider;
-    @apply transition-all duration-300 ease-out;
-    @apply border-2 border-transparent;
-  }
-
-  .btn-play {
-    @apply relative overflow-hidden;
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-    @apply text-dark-900;
-    @apply hover:scale-105 hover:shadow-[0_0_30px_rgba(251,191,36,0.5)];
-  }
-
-  .btn-play::before {
-    content: '';
-    @apply absolute inset-0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    transform: translateX(-100%);
-    animation: shimmer 2s linear infinite;
-  }
-
-  .player-slot {
-    @apply relative rounded-xl overflow-hidden;
-    background: linear-gradient(145deg, #1f2937 0%, #0f172a 100%);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-  }
-
-  .table {
-    @apply relative rounded-[100px] p-8;
-    background: radial-gradient(ellipse at center, #166534 0%, #14532d 30%, #0f3d1f 60%, #0a2914 100%);
-    box-shadow: 
-      0 0 60px rgba(22, 101, 52, 0.4),
-      inset 0 0 100px rgba(0, 0, 0, 0.5),
-      0 10px 40px rgba(0, 0, 0, 0.5);
-    border: 8px solid #1a3a2a;
-  }
-
-  .chip {
-    @apply w-12 h-12 rounded-full flex items-center justify-center font-bold text-xs;
-    background: radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b, #b45309);
-    box-shadow: 
-      0 4px 8px rgba(0, 0, 0, 0.4),
-      inset 0 2px 4px rgba(255, 255, 255, 0.3);
-    border: 2px solid #92400e;
-  }
-
-  .input-field {
-    @apply w-full px-4 py-3 rounded-xl bg-dark-800 border border-dark-200 text-white;
-    @apply focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20;
-    @apply transition-all duration-300;
-  }
-
-  .toggle {
-    @apply w-12 h-6 rounded-full bg-dark-700 cursor-pointer relative transition-colors duration-300;
-  }
-
-  .toggle.active {
-    @apply bg-gold-500;
-  }
-
-  .toggle::after {
-    content: '';
-    @apply absolute w-5 h-5 rounded-full bg-white top-0.5 transition-transform duration-300;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .toggle.active::after {
-    @apply translate-x-6;
-  }
-
-  .toggle:not(.active)::after {
-    @apply translate-x-0.5;
-  }
-}
-
 @keyframes shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+.btn-play {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  color: #050510;
+  transition: all 0.3s ease;
+}
+
+.btn-play:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+}
+
+.btn-play::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 2s linear infinite;
+}
+
+.btn-action {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease-out;
+  border: 2px solid transparent;
+}
+
+.player-slot {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1f2937 0%, #0f172a 100%);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.poker-table {
+  position: relative;
+  border-radius: 100px;
+  padding: 2rem;
+  background: radial-gradient(ellipse at center, #166534 0%, #14532d 30%, #0f3d1f 60%, #0a2914 100%);
+  box-shadow: 
+    0 0 60px rgba(22, 101, 52, 0.4),
+    inset 0 0 100px rgba(0, 0, 0, 0.5),
+    0 10px 40px rgba(0, 0, 0, 0.5);
+  border: 8px solid #1a3a2a;
+}
+
+.chip {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.75rem;
+  background: radial-gradient(circle at 30% 30%, #fbbf24, #f59e0b, #b45309);
+  box-shadow: 
+    0 4px 8px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.3);
+  border: 2px solid #92400e;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #0d0d1a;
+  border: 1px solid #0f3460;
+  color: white;
+  transition: all 0.3s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.toggle {
+  width: 3rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background: #1f2937;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+}
+
+.toggle.active {
+  background: #f59e0b;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: white;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.toggle.active::after {
+  transform: translateX(1.5rem);
+}
+
+.toggle:not(.active)::after {
+  transform: translateX(0);
 }
